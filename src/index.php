@@ -6,7 +6,7 @@
     <meta name="description" content="SVA demo webpage - HTTP request metadata">
     <meta name="author" content="Erik Schindler, Stephan Kühne">
 
-    <title><?=getenv()['TITLE'] ?? 'SVA Demo - HTTP Echo'?></title>
+    <title><?=getenv('TITLE') ? htmlentities(getenv('TITLE'), ENT_COMPAT, 'UTF-8') : 'SVA Demo - HTTP Echo'?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
       <div class="container-md">
         <span class="navbar-brand mb-0 h1 fs-1">
           <img src="/logo.svg" alt="SVA Logo" height="48" class="d-inline-block align-text-top">
-          <?=getenv()['TITLE'] ?? 'SVA Demo - HTTP Echo'?>
+          <?=getenv('TITLE') ? htmlentities(getenv('TITLE'), ENT_COMPAT, 'UTF-8') : 'SVA Demo - HTTP Echo'?>
         </span>
       </div>
     </nav>
