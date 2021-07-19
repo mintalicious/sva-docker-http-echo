@@ -37,6 +37,12 @@
         <?php endforeach; ?>
       </table>
     </div>
+
+    <footer class="footer mt-2 py-3 bg-light">
+      <div class="container text-center">
+        <span class="text-muted">created by Erik Schindler</span>
+      </div>
+    </footer>
   
   </body>
 </html>
