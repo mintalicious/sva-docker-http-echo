@@ -23,5 +23,6 @@ Other existing URLs:
 * /bootstrap.min.css
 
 ## Environment
+* TITLE=SVA-Demo-HTTP-Echo
 * BG_CLASS=bg-primary (https://getbootstrap.com/docs/5.0/utilities/background/#background-color)
 * BG_COLOR=orangered (https://www.w3schools.com/cssref/css_colors.asp)
