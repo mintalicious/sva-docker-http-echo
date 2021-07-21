@@ -91,17 +91,17 @@
         </div>
     </footer>
 
-</body>
-
-<script type="text/javascript">
-function toggle_rows() {
-    // alert('clicked!');
-    elems = document.querySelectorAll('tr.more');
-    for(i=0; i<elems.length; i++) {
-        e = elems[i];
-        e.classList.toggle('d-none');
+    <script type="text/javascript">
+    function toggle_rows() {
+        // alert('clicked!');
+        elems = document.querySelectorAll('tr.more');
+        for(i=0; i<elems.length; i++) {
+            e = elems[i];
+            e.classList.toggle('d-none');
+        }
     }
-}
-</script>
+    </script>
+
+  </body>
 
 </html>
