@@ -1,6 +1,6 @@
-FROM alpine:latest
+FROM alpine:3.18.3
 
-RUN apk update && apk add apache2 php8-apache2
+RUN apk update && apk add apache2 php82-apache2
 RUN sed -i 's/^#\(LoadModule rewrite_module.*\)$/\1/' /etc/apache2/httpd.conf
 RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/httpd.conf
 RUN echo "CustomLog /dev/stdout common" >> /etc/apache2/httpd.conf
