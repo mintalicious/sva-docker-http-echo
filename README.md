@@ -24,5 +24,11 @@ Other existing URLs:
 
 ## Environment
 * TITLE=SVA-Demo-HTTP-Echo
+* SHOW_CONTAINER_HOSTNAME=true
 * BG_CLASS=bg-primary (https://getbootstrap.com/docs/5.0/utilities/background/#background-color)
-* BG_COLOR=orangered (https://www.w3schools.com/cssref/css_colors.asp)
+* BG_COLOR=random|orangered (https://www.w3schools.com/cssref/css_colors.asp)
+
+|Env|Effect|
+|---|------|
+|SHOW_CONTAINER_HOSTNAME=true|display content of container's /etc/hostname|
+|BG_COLOR=random|colorize the header depending on the container hostname (which should be a hex string) or with a random color|

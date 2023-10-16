@@ -16,10 +16,35 @@
 </head>
 
 <body>
+    <?php
 
+    $cHostname = file_get_contents('/etc/hostname');
+
+    $bgClass = false !== getenv('BG_CLASS') ? getenv('BG_CLASS') : 'bg-primary';
+    $bgColor = '';
+
+    if (false !== getenv('BG_COLOR')) {
+        $bgColor = getenv('BG_COLOR');
+
+        if (getenv('BG_COLOR') === 'random') {
+            $base = $cHostname;
+            if (!preg_match('/^[0-9a-fA-F]{6,}$/', $base)) {
+                $base = dechex(random_int(0, 255)) . dechex(random_int(0, 255)) . dechex(random_int(0, 255));
+            }
+
+            $r = hexdec(substr($base, 0, 2));
+            $g = hexdec(substr($base, 2, 2));
+            $b = hexdec(substr($base, 4, 2));
+
+            $bgColor = "rgba($r, $g, $b, .5)";
+        }
+
+        $bgColor = "style=\"background-color:{$bgColor} !important;\"";
+    }
+
+    ?>
     <!-- As a heading -->
-    <nav class="navbar navbar-dark <?=getenv()['BG_CLASS'] ?? 'bg-primary'?>"
-        <?=getenv('BG_COLOR') ? 'style="background-color:'.getenv('BG_COLOR').' !important;"' : ''?>>
+    <nav class="navbar navbar-dark <?=$bgClass?>" <?=$bgColor?>>
         <div class="container-md">
             <span class="navbar-brand mb-0 h1 fs-1">
                 <?=file_get_contents(__DIR__ . '/logo.svg')?>
@@ -44,9 +69,17 @@
                 <th>Key</th>
                 <th>Value</th>
             </tr>
+
+            <?php if (strtolower(getenv('SHOW_CONTAINER_HOSTNAME')) === 'true'): ?>
+            <tr>
+                <td>/etc/hostname</td>
+                <td class="text-break"><?=file_get_contents('/etc/hostname')?></td>
+            </tr>
+            <?php endif ?>
+
             <?php ksort($_SERVER); ?>
 
-            <?php 
+            <?php
             foreach ($top_vars as $key):
                 // print($key);
                 if (array_key_exists($key, $_SERVER)):
@@ -75,7 +108,7 @@
                     </div>
                 </td>
             </tr>
-            
+
             <?php foreach ($_SERVER as $key => $value): ?>
             <tr class="more d-none">
                 <td><?=$key?></td>
